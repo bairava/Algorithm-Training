@@ -1,25 +1,37 @@
+import java.util.Scanner;
+
 public class QuickSort {
-public static int[] inputArray = new int[]{4,35,34,32,5,2,55,94,84,28,10};
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
-        int[] sortedArray = myQuickSort(0,inputArray.length-1);
-        for(int j=0;j<sortedArray.length;j++)
-            System.out.print(sortedArray[j] +" ");
+        //Get the count of elements
+        System.out.println("Please enter the count of elements to sort...");
+        Scanner sc = new Scanner(System.in);
+        int count = sc.nextInt();
+        int eachElement;
+        int[] inputArray = new int[count];
+        System.out.println("Please enter the element");
+        //Update unsorted array of elements
+        while(count>0){
+            eachElement = sc.nextInt();
+            inputArray[count-1] = eachElement;
+            count--;
+        }
+        //Call for the quick sort mothod
+        int[] sortedArray = myQuickSort(0,inputArray.length-1,inputArray);
+        //Print the sorted array
+        for(int answer : sortedArray)
+            System.out.print(answer +" ");
     }
 
-    private static int[] myQuickSort(int start, int end) {
+    private static int[] myQuickSort(int start, int end, int[] inputArray) {
       if(start<end){
-          int p = partition(start,end);
-          myQuickSort(start,p-1);
-          myQuickSort(p+1,end);
+          int p = partition(start,end,inputArray);
+          myQuickSort(start,p-1,inputArray);
+          myQuickSort(p+1,end,inputArray);
       }
         return inputArray;
     }
 
-    private static int partition(int start, int end) {
+    private static int partition(int start, int end,int[] inputArray) {
         int pivot=inputArray[end];
         int i=start;
         for(int j=start;j<end;j++){
