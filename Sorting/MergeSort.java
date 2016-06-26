@@ -19,9 +19,9 @@ public class MergeSort {
         else if(n>1){
             tempArray = new int[n];
             mergeSortSplit(toSort,tempArray,0,n-1);
-            for(int answer : toSort)
-                System.out.print(answer+" ");
         }
+        for(int answer : toSort)
+                System.out.print(answer+" ");
       }
         
         else{
