@@ -1,7 +1,7 @@
-package mergesort;
 /**
 * Insertion Sort implementation in JAVA
 **/
+import java.util.InputMismatchException;
 import java.util.Scanner;
 public class InsertionSort {
    public static void main(String[] args) {
@@ -9,10 +9,10 @@ public class InsertionSort {
     System.out.println("Please enter the number of elements for insertion sort");
     Scanner sc = new Scanner(System.in);
     int n=sc.nextInt();
-     //Request user to enter 'n' elements
-    if(n>0){
-        System.out.println("Please enter the "+n+" elements");
+    //Request user to enter 'n' elements
+    try{
         int[] toSort = new int[n];
+        System.out.println("Please enter the "+n+" elements");
         for(int i=0 ; i<n; i++){
             toSort[i]=sc.nextInt();
         }
@@ -39,9 +39,14 @@ public class InsertionSort {
         for(int answer : toSort)
                 System.out.print(answer+" ");
     }
-    //If invalid count of elements entered by user terminate the program
-    else{
-           System.out.println("Invalid input!!! Please enter a positive number for count of elements"); 
-        }
+     catch(NegativeArraySizeException e){
+        System.out.println("Array size can't be negative, please try again with a positive value "+e);
+    }
+    catch(InputMismatchException e){
+        System.out.println("Please enter only integers as array elements "+e);
+    }
+    catch(Exception e){
+        System.out.println("Exception due to "+e);
+    }
     }   
 }
