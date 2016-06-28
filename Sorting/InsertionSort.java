@@ -4,7 +4,7 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 public class InsertionSort {
-   public static void main(String[] args) {
+   public static void main(String[] args) throws Exception{
     //Request user to enter the count of elements   
     System.out.println("Please enter the number of elements for insertion sort");
     Scanner sc = new Scanner(System.in);
